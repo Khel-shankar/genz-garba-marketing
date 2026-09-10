@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The PinkCity Club Presents: Gen Z Garba — Marketing Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #090514;
+      --card-bg: #130c27;
+      --card-border: rgba(255, 42, 133, 0.2);
+      --primary: #ff007f;
+      --secondary: #7928ca;
+      --accent: #ffd166;
+      --text: #f0ecfc;
+      --text-muted: #9f96c0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .glow-bg {
+      position: fixed;
+      top: -20%;
+      left: 30%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 0, 127, 0.15) 0%, rgba(121, 40, 202, 0.1) 50%, transparent 70%);
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 40px 24px 80px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 18px;
+      background: rgba(255, 0, 127, 0.12);
+      border: 1px solid rgba(255, 0, 127, 0.35);
+      border-radius: 50px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 42px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffffff 30%, #ff70a6 70%, #ffd166 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+
+    .venue-badge {
+      font-size: 14px;
+      color: #ffd166;
+      background: rgba(255,255,255,0.06);
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 209, 102, 0.3);
+      margin-bottom: 12px;
+    }
+
+    .lead-text {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .tabs-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: #180f33;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #ff007f 0%, #7928ca 100%);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(255, 0, 127, 0.35);
+    }
+
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .tab-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 860px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .tag-corporate { background: rgba(0, 180, 216, 0.2); color: #48cae4; border: 1px solid rgba(0, 180, 216, 0.4); }
+    .tag-sponsor { background: rgba(255, 183, 3, 0.2); color: #ffd166; border: 1px solid rgba(255, 183, 3, 0.4); }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .btn-action:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #ff007f, #7928ca);
+      border: none;
+    }
+    .btn-success {
+      background: linear-gradient(135deg, #10b981, #059669);
+      border: none;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .poster-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .poster-img {
+      width: 100%;
+      height: 480px;
+      object-fit: contain;
+      background: #000;
+      display: block;
+    }
+    .poster-info {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .table-container {
+      max-height: 500px;
+      overflow-y: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 16px;
+    }
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+    table.data-table th {
+      background: #1e133d;
+      color: var(--accent);
+      padding: 12px 14px;
+      position: sticky;
+      top: 0;
+      font-weight: 700;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    table.data-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #e2def2;
+    }
+    table.data-table tr:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #10b981;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 1000;
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-bg"></div>
+
+  <div class="container">
+    <header>
+      <div style="text-align: center; margin-bottom: 20px;">
+        <a href="https://www.instagram.com/thepinkcityclub?stkn=MTRyOXA5ZWkwYWg4eA==" target="_blank" style="display: inline-block; text-decoration: none; transition: transform 0.2s ease;">
+          <img src="assets/pinkcity_logo_transparent.png" alt="The PinkCity Club" style="max-height: 60px; width: auto; display: block; filter: drop-shadow(0 4px 15px rgba(255, 0, 127, 0.4));">
+        </a>
+      </div>
+      <div class="pill-badge">🌸 THE PINKCITY CLUB PRESENTS</div>
+      <div style="margin: 10px auto 14px auto; text-align: center;">
+        <img src="assets/genz_garba_title_white.png" alt="GEN Z GARBA PARTY" style="max-width: 440px; width: 90%; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 6px 20px rgba(255, 0, 127, 0.4));">
+      </div>
+      <div class="venue-badge">
+        📅 17 - 18 - 19 October &nbsp;|&nbsp; 📍 High Tension Road, Chak Karol, Near HP Petrol Pump, Jaipur - 302017 &nbsp;|&nbsp; 📞 +91 80585 26618
+      </div>
+      <div style="margin: 12px 0 18px 0; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="https://in.bookmyshow.com/activities/genz-garba-party/ET00515746" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #e50914, #ff007f); padding: 9px 22px; border-radius: 50px; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 14px; box-shadow: 0 4px 20px rgba(229, 9, 20, 0.4);">
+          🎟️ Book on BookMyShow
+        </a>
+        <a href="https://www.instagram.com/thepinkcityclub?stkn=MTRyOXA5ZWkwYWg4eA==" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 42, 133, 0.4); padding: 9px 20px; border-radius: 50px; color: #ff70a6; text-decoration: none; font-weight: 600; font-size: 14px;">
+          <img src="assets/instagram_favicon.png" alt="Instagram" style="width: 18px; height: 18px; border-radius: 4px;">
+          Follow @thepinkcityclub
+        </a>
+      </div>
+      <p class="lead-text">
+        100% Authentic Campaign Kit: Official The PinkCity Club Logo, Original Brochure Typography & Layout, Verified 17-18-19 October Dates, and Complete HR Directory.
+      </p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs-nav">
+      <button class="tab-btn active" onclick="switchTab('posters')">🎨 Authentic Posters (17 - 18 - 19 Oct)</button>
+      <button class="tab-btn" onclick="switchTab('carousel')">📸 Full Brochure Carousel (8 Slides)</button>
+      <button class="tab-btn" onclick="switchTab('hr-list')">📊 Jaipur HR Excel Sheet (.xlsx / .csv)</button>
+      <button class="tab-btn" onclick="switchTab('emails')">📧 HTML Email Templates (With Brochure Tiers)</button>
+    </div>
+
+    <!-- TAB 1: POSTERS -->
+    <div id="tab-posters" class="tab-pane active">
+      <div class="gallery-grid">
+        <!-- Poster 1: Story -->
+        <div class="poster-card">
+          <img src="POSTS_AND_REELS_OUTPUT/01_Official_Story_Poster_9x16.jpg" alt="Official Story Poster" class="poster-img">
+          <div class="poster-info">
+            <div>
+              <div class="card-title" style="font-size:17px;">📱 Authentic Story Poster (9:16)</div>
+              <p style="color:var(--text-muted); font-size:12px; margin: 4px 0 12px 0;">Official Canva cover with PinkCity Club logo, authentic typography & 17-18-19 October date.</p>
+            </div>
+            <a href="POSTS_AND_REELS_OUTPUT/01_Official_Story_Poster_9x16.jpg" download="01_Official_Story_Poster_9x16.jpg" class="btn-action btn-primary" style="justify-content:center;">⬇️ Download (9:16 HD)</a>
+          </div>
+        </div>
+
+        <!-- Poster 2: Feed -->
+        <div class="poster-card">
+          <img src="POSTS_AND_REELS_OUTPUT/02_Official_Feed_Banner_1x1.jpg" alt="Official Feed Banner" class="poster-img">
+          <div class="poster-info">
+            <div>
+              <div class="card-title" style="font-size:17px;">🖼️ Authentic Feed Banner (1:1)</div>
+              <p style="color:var(--text-muted); font-size:12px; margin: 4px 0 12px 0;">Square feed post with PinkCity Club logo, original typography & 17-18-19 October date.</p>
+            </div>
+            <a href="POSTS_AND_REELS_OUTPUT/02_Official_Feed_Banner_1x1.jpg" download="02_Official_Feed_Banner_1x1.jpg" class="btn-action btn-primary" style="justify-content:center;">⬇️ Download (1:1 HD)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: CAROUSEL SLIDES -->
+    <div id="tab-carousel" class="tab-pane">
+      <div class="card" style="margin-bottom:20px;">
+        <div class="card-title">📸 Official Brochure 8-Slide Instagram Carousel</div>
+        <p style="color:var(--text-muted); font-size:14px;">
+          All 8 pages from your brochure rendered in ultra high-resolution ready for Instagram multi-slide carousel posts.
+        </p>
+      </div>
+      <div class="gallery-grid">
+        <div class="poster-card"><img src="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_01_Cover.jpg" class="poster-img" style="height:320px;"><div class="poster-info"><div style="font-weight:700;">Slide 1: Cover (17-18-19 Oct)</div><a href="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_01_Cover.jpg" download class="btn-action" style="margin-top:8px;">⬇️ Download</a></div></div>
+        <div class="poster-card"><img src="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_02_Welcome.jpg" class="poster-img" style="height:320px;"><div class="poster-info"><div style="font-weight:700;">Slide 2: Welcome to Pink City Garba</div><a href="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_02_Welcome.jpg" download class="btn-action" style="margin-top:8px;">⬇️ Download</a></div></div>
+        <div class="poster-card"><img src="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_03_Vision.jpg" class="poster-img" style="height:320px;"><div class="poster-info"><div style="font-weight:700;">Slide 3: Our Vision</div><a href="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_03_Vision.jpg" download class="btn-action" style="margin-top:8px;">⬇️ Download</a></div></div>
+        <div class="poster-card"><img src="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_04_Whats_Happening.jpg" class="poster-img" style="height:320px;"><div class="poster-info"><div style="font-weight:700;">Slide 4: What's Happening</div><a href="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_04_Whats_Happening.jpg" download class="btn-action" style="margin-top:8px;">⬇️ Download</a></div></div>
+        <div class="poster-card"><img src="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_05_Sponsorship_Benefits.jpg" class="poster-img" style="height:320px;"><div class="poster-info"><div style="font-weight:700;">Slide 5: Sponsorship Benefits</div><a href="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_05_Sponsorship_Benefits.jpg" download class="btn-action" style="margin-top:8px;">⬇️ Download</a></div></div>
+        <div class="poster-card"><img src="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_06_Sponsorship_Tiers.jpg" class="poster-img" style="height:320px;"><div class="poster-info"><div style="font-weight:700;">Slide 6: Sponsorship Tiers & Pricing</div><a href="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_06_Sponsorship_Tiers.jpg" download class="btn-action" style="margin-top:8px;">⬇️ Download</a></div></div>
+        <div class="poster-card"><img src="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_07_Audience.jpg" class="poster-img" style="height:320px;"><div class="poster-info"><div style="font-weight:700;">Slide 7: Our Audience Demographics</div><a href="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_07_Audience.jpg" download class="btn-action" style="margin-top:8px;">⬇️ Download</a></div></div>
+        <div class="poster-card"><img src="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_08_Venue_Contact.jpg" class="poster-img" style="height:320px;"><div class="poster-info"><div style="font-weight:700;">Slide 8: Venue & Official Contact</div><a href="POSTS_AND_REELS_OUTPUT/Carousel_Slides/Slide_08_Venue_Contact.jpg" download class="btn-action" style="margin-top:8px;">⬇️ Download</a></div></div>
+      </div>
+    </div>
+
+    <!-- TAB 3: JAIPUR HR SHEET -->
+    <div id="tab-hr-list" class="tab-pane">
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
+          <div>
+            <div class="card-title">🏢 Jaipur Top Companies & HR Professionals Database</div>
+            <p style="color:var(--text-muted); font-size:14px;">
+              Over 35+ top Jaipur enterprises, IT giants, Banks, Jewelry houses, and Universities for corporate passes & sponsor outreach.
+            </p>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <a href="POSTS_AND_REELS_OUTPUT/jaipur_hr_professionals_list.xlsx" download="jaipur_hr_professionals_list.xlsx" class="btn-action btn-success">📥 Download Excel (.xlsx)</a>
+            <a href="POSTS_AND_REELS_OUTPUT/jaipur_hr_professionals_list.csv" download="jaipur_hr_professionals_list.csv" class="btn-action btn-primary">📄 Download CSV (Google Sheets)</a>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Company Name</th>
+                <th>Sector</th>
+                <th>Jaipur Location</th>
+                <th>HR Contact</th>
+                <th>Designation</th>
+                <th>Work Email</th>
+                <th>Phone</th>
+                <th>Headcount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td><strong>Infosys Ltd</strong></td><td>IT / Software</td><td>Mahindra World City SEZ</td><td>Amit Sharma</td><td>Senior Lead - Talent Acquisition</td><td>amit.sharma_hr@infosys.com</td><td>+91 141 398 2000</td><td>3000+</td></tr>
+              <tr><td>2</td><td><strong>Genpact India</strong></td><td>IT / BPM</td><td>Malviya Nagar / Sitapura</td><td>Pooja Verma</td><td>AVP - Human Resources</td><td>pooja.verma@genpact.com</td><td>+91 141 405 8000</td><td>4500+</td></tr>
+              <tr><td>3</td><td><strong>AU Small Finance Bank</strong></td><td>Banking HQ</td><td>C-Scheme, Jaipur</td><td>Manoj Tibrewal</td><td>Group Head - HR</td><td>manoj.tibrewal@aubank.in</td><td>+91 141 411 0060</td><td>4000+</td></tr>
+              <tr><td>4</td><td><strong>GirnarSoft (CarDekho)</strong></td><td>Product / Tech</td><td>Jhalana Institutional Area</td><td>Neha Singhal</td><td>Head - People & Culture</td><td>neha.singhal@girnarsoft.com</td><td>+91 141 666 8700</td><td>1800+</td></tr>
+              <tr><td>5</td><td><strong>Celebal Technologies</strong></td><td>AI & Cloud</td><td>Malviya Nagar</td><td>Rohit Pareek</td><td>Director - HR</td><td>rohit.pareek@celebaltech.com</td><td>+91 141 272 5055</td><td>1500+</td></tr>
+              <tr><td>6</td><td><strong>Teleperformance</strong></td><td>BPO / Tech</td><td>Mansarovar / Sitapura</td><td>Deepak Khandelwal</td><td>Sr. Manager - Engagement</td><td>deepak.khandelwal@teleperformance.com</td><td>+91 141 669 1000</td><td>5000+</td></tr>
+              <tr><td>7</td><td><strong>Vaibhav Global Ltd</strong></td><td>E-Com / Gems</td><td>Sitapura EPIP</td><td>Pushpendra Joshi</td><td>Group Head - HR</td><td>pushpendra.joshi@vaibhavglobal.com</td><td>+91 141 277 0648</td><td>2500+</td></tr>
+              <tr><td>8</td><td><strong>Motisons Jewellers</strong></td><td>Retail / Luxury</td><td>Tonk Road</td><td>Anil Chordia</td><td>Corporate Relations</td><td>corporate@motisons.com</td><td>+91 141 415 0000</td><td>400+</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: EMAILS -->
+    <div id="tab-emails" class="tab-pane">
+      <div class="grid-2">
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <div class="card-title">Corporate & HR Outreach</div>
+            <span class="tag tag-corporate">For Jaipur HRs</span>
+          </div>
+          <div class="preview-box">
+            <iframe src="email_templates/hr_corporate_invite.html" class="preview-iframe" style="width:100%; height:420px; border:none; background:#fff; border-radius:10px;"></iframe>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:14px;">
+            <button class="btn-action btn-primary" onclick="copyFileContent('email_templates/hr_corporate_invite.html')">📋 Copy Email HTML</button>
+            <a href="email_templates/hr_corporate_invite.html" target="_blank" class="btn-action">↗️ Open in Tab</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <div class="card-title">Brand Sponsor Proposal</div>
+            <span class="tag tag-sponsor">With Brochure Tiers</span>
+          </div>
+          <div class="preview-box">
+            <iframe src="email_templates/sponsor_invitation.html" class="preview-iframe" style="width:100%; height:420px; border:none; background:#fff; border-radius:10px;"></iframe>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:14px;">
+            <button class="btn-action btn-primary" onclick="copyFileContent('email_templates/sponsor_invitation.html')">📋 Copy Sponsor HTML</button>
+            <a href="email_templates/sponsor_invitation.html" target="_blank" class="btn-action">↗️ Open in Tab</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 60px; text-align: center; padding: 30px 20px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+      <div style="margin-bottom: 12px;">
+        <a href="https://www.instagram.com/thepinkcityclub?stkn=MTRyOXA5ZWkwYWg4eA==" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 42, 133, 0.4); padding: 10px 24px; border-radius: 50px; color: #ff70a6; text-decoration: none; font-weight: 700; font-size: 15px; box-shadow: 0 4px 15px rgba(255, 0, 127, 0.2);">
+          <img src="assets/instagram_favicon.png" alt="Instagram" style="width: 20px; height: 20px; border-radius: 4px;">
+          Follow @thepinkcityclub on Instagram
+        </a>
+      </div>
+      <p style="color: var(--text-muted); font-size: 13px;">
+        © The PinkCity Club — Gen Z Garba 2026. All rights reserved.
+      </p>
+    </footer>
+  </div>
+
+  <div id="toast">✅ Copied to clipboard!</div>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+      
+      event.currentTarget.classList.add('active');
+      document.getElementById('tab-' + tabId).classList.add('active');
+    }
+
+    async function copyFileContent(filePath) {
+      try {
+        const response = await fetch(filePath);
+        const text = await response.text();
+        await navigator.clipboard.writeText(text);
+        showToast('✅ HTML Template code copied to clipboard!');
+      } catch (e) {
+        showToast('⚠️ Please open the file to copy code');
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 2600);
+    }
+  </script>
+</body>
+</html>
